@@ -74,7 +74,12 @@ public class UserController implements Serializable {
         this.password = request.getParameter("password");
         
         if(user.isValidRegister(this.username, this.email, this.phonenumber, this.password)) {
-            // Create user
+            User newUser = new User();
+            newUser.setUsername(this.username);
+            newUser.setEmail(this.email);
+            newUser.setPhoneNumber(this.phonenumber);
+            newUser.setPassword(this.password);
+            user.storeUser(newUser);
             return "login";
         } else return "register";
     }

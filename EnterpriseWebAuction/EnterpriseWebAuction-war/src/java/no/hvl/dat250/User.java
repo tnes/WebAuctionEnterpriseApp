@@ -28,12 +28,12 @@ import javax.persistence.Table;
  * @author TorkelNes
  */
 @Stateful
-@LocalBean
+//@LocalBean
 @Entity
 @Table(name = "\"User\"") //User is a reservered SQL keyword - this escapes this
 @NamedQueries({
-    @NamedQuery(name = "User.findByUsername", query = "SELECT u from User u WHERE u.username = :username"),
-    @NamedQuery(name = "User.createUser", query = "SELECT u from User u WHERE u.username = :username")
+    //@NamedQuery(name = "User.findByUsername", query = "SELECT u from User u WHERE u.username = :username"),
+    //@NamedQuery(name = "User.createUser", query = "SELECT u from User u WHERE u.username = :username")
     })
 public class User implements Serializable {
     @PersistenceContext(unitName = "EnterpriseWebAuction-warPU")
@@ -74,6 +74,10 @@ public class User implements Serializable {
     public User() {
     }
     
+    public void storeUser(User user) {
+        em.persist(user);
+    }
+    
     public boolean isValidLogin(String username, String password) {
         boolean isValid;
         Query createNamedQuery = getEntityManager().createNamedQuery("User.findByUsername");
@@ -84,10 +88,7 @@ public class User implements Serializable {
     }
     
     public boolean isValidRegister(String un, String em, String pn, String pw) {
-        if(isValidUsername(un) && isValidEmail(em) && isValidPhonenumber(pn) && isValidPassword(pw)) {
-            return true;
-        }
-        else return false;
+        return isValidUsername(un) && isValidEmail(em) && isValidPhonenumber(pn) && isValidPassword(pw);
     }
     
     public User fetchUser(String username) {
