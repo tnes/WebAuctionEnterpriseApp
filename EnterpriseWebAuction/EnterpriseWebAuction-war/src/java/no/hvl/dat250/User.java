@@ -79,7 +79,7 @@ public class User implements Serializable {
         Query createNamedQuery = getEntityManager().createNamedQuery("User.findByUsername");
         createNamedQuery.setParameter("username", username);
         
-        if(createNamedQuery.getResultList().size() > 0) {
+        if(createNamedQuery.getResultList().size() >= 1) {
             isValid = true;
         } else {
             isValid = false;
