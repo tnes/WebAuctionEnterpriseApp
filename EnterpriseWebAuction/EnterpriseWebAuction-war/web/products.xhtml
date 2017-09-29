@@ -9,6 +9,9 @@
     <h:body>
         <h1>Products</h1>
         <p>Logged in as #{user.username}</p>
+        <h:form>
+            <h:commandButton id="publishProduct" value="Publish product" action="publishproduct" />
+        </h:form>
         <!-- Filtering options -->
         <ui:repeat value="#{productController.products}" var="product">
             <li><h:outputText value="#{product.name}" /></li>
@@ -16,6 +19,9 @@
             <!-- Product Image -->
             <li><h:outputText value="Current bid: #{product.currentBid.amount}" /></li>
             <li><h:outputText value="Time remaning: #{product.remainingTime}" /></li>
+            <h:form>
+                <h:commandButton id="goToProduct" value="Go to product" action="product" /> <!-- Link til produktet? -->
+            </h:form>
         </ui:repeat>
     </h:body>
 </html>

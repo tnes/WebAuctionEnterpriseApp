@@ -13,6 +13,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 
 /**
  *
@@ -21,6 +24,10 @@ import javax.persistence.ManyToOne;
 @Stateless
 @LocalBean
 @Entity
+@Table(name = "feedback")
+@NamedQueries({
+    //@NamedQuery(name = "Feedback.findByAuthorID", query = "SELECT f from Feedback f WHERE f.author_id = user.id")
+})
 public class Feedback implements Serializable{
     
     @Id

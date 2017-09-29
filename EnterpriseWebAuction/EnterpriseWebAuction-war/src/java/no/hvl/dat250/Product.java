@@ -13,7 +13,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 /**
  *
@@ -22,6 +25,10 @@ import javax.persistence.OneToOne;
 @Stateless
 @LocalBean
 @Entity
+@Table(name = "product")
+@NamedQueries({
+    //@NamedQuery(name = "Product.findAll", query = "SELECT * FROM Product")
+})
 public class Product implements Serializable{
     
     @Id
@@ -48,6 +55,10 @@ public class Product implements Serializable{
      * Creates a new instance of Product
      */
     public Product() {
+    }
+    
+    public boolean productIsValid(String name, String picture, String features) {
+        return name != null && name.length() > 0 && picture != null && picture.length() > 0 && features != null && features.length() > 0;
     }
 
     public Long getId() {
