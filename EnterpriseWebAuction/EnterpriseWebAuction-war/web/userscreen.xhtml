@@ -19,6 +19,13 @@ and open the template in the editor.
     </c:when>
     <c:otherwise>
         <p>Display products for sale with "View item" button</p>
+        <h2>Leave feedback</h2>
+        <h:form>
+            <p>Rating: <h:inputText id="rating" value="#{feedback.rating}" /></p>
+            <h:inputTextarea id="feedbackcontent" value="#{feedback.content}" />
+            <h:commandButton id="submitFeedback" value="Submit Feedback" action="#{feedback.submit}" />
+        </h:form>
+        <h2>Feedback from other customers</h2>
     </c:otherwise>
 </c:choose>
     </h:body>

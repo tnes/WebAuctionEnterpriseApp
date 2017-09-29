@@ -67,4 +67,8 @@ public class Feedback implements Serializable{
     public void setContent(String content) {
         this.content = content;
     }
+
+    public boolean ratingIsValid(double rating) {
+        return rating >= 0 && rating <= 100;
+    }
 }

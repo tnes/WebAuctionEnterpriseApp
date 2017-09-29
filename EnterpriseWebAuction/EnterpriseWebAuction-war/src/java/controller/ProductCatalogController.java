@@ -27,4 +27,6 @@ public class ProductCatalogController implements Serializable {
     public ProductCatalogController() {
     }
     
+    
+    
 }

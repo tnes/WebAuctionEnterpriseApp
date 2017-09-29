@@ -85,10 +85,9 @@ public class User implements Serializable {
     
     public boolean isValidRegister(String un, String em, String pn, String pw) {
         if(isValidUsername(un) && isValidEmail(em) && isValidPhonenumber(pn) && isValidPassword(pw)) {
-            Query createNamedQuery = getEntityManager().createNamedQuery("User.findByUsername");
-            createNamedQuery.setParameter("username", un);
+            return true;
         }
-        return true;
+        else return false;
     }
     
     public User fetchUser(String username) {
