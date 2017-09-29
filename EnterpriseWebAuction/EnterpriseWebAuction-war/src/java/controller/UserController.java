@@ -76,7 +76,13 @@ public class UserController implements Serializable {
         this.password = password;
     }
     
+    public String navigate() {
+        return "register";
+    }
     
+    public String home() {
+        return "products";
+    }
     
     public String login() {
         FacesContext context = FacesContext.getCurrentInstance();

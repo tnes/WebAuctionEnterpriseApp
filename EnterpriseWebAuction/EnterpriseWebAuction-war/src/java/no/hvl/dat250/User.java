@@ -79,18 +79,14 @@ public class User implements Serializable {
         Query createNamedQuery = getEntityManager().createNamedQuery("User.findByUsername");
         createNamedQuery.setParameter("username", username);
         
-        if(createNamedQuery.getResultList().size() >= 1) {
-            isValid = true;
-        } else {
-            isValid = false;
-        }
+        isValid = createNamedQuery.getResultList().size() > 0;
         return isValid;
     }
     
     public boolean isValidRegister(String un, String em, String pn, String pw) {
         if(isValidUsername(un) && isValidEmail(em) && isValidPhonenumber(pn) && isValidPassword(pw)) {
             Query createNamedQuery = getEntityManager().createNamedQuery("User.findByUsername");
-            createNamedQuery.setParameter("username", username);
+            createNamedQuery.setParameter("username", un);
         }
         return true;
     }
@@ -98,7 +94,7 @@ public class User implements Serializable {
     public User fetchUser(String username) {
         Query createNamedQuery = getEntityManager().createNamedQuery("User.findByUsername");
         createNamedQuery.setParameter("username", username);
-            return (User) createNamedQuery.getSingleResult();
+        return (User) createNamedQuery.getSingleResult();
     }
     
     

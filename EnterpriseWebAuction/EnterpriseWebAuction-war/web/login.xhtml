@@ -10,9 +10,11 @@
         <h:form>
             <p>Username: <h:inputText id="username" value="#{user.username}" /></p>
             <p>Password: <h:inputText id="password" value="#{user.password}" /></p>
-            <h:commandButton id="login" value="Submit" action="#{user.login}" />
+            <h:commandButton id="login" value="Submit" action="#{user.home}" />
         </h:form>
-        <h:commandButton id="register" value="Register" action="#{user.register}" />
+        <h:form>
+            <h:commandButton id="register" value="Register" action="#{user.navigate}" />
+        </h:form>
     </h:body>
 </html>
 
