@@ -16,9 +16,9 @@ and open the template in the editor.
         <h:form>
             <p>Username: <h:inputText id="username" value="#{userController.username}" /></p>
             <p>Email: <h:inputText id="email" value="#{userController.email}" /></p>
-            <p>Phone number: <h:inputText id="phonenumber" value="#{user.phonenumber}" /></p>
-            <p>Password: <h:inputText id="password" value="#{user.password}" /></p>
-            <h:commandButton id="register" value="Register" action="#{user.register}" />
+            <p>Phone number: <h:inputText id="phonenumber" value="#{userController.phonenumber}" /></p>
+            <p>Password: <h:inputText id="password" value="#{userController.password}" /></p>
+            <h:commandButton id="register" value="Register" action="#{userController.register}" />
         </h:form>
     </body>
 </html>

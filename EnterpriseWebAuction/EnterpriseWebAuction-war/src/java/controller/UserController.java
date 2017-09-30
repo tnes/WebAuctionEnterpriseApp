@@ -12,6 +12,7 @@ import javax.annotation.ManagedBean;
 import javax.ejb.EJB;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import no.hvl.dat250.User;
 
 /**
@@ -57,6 +58,9 @@ public class UserController implements Serializable {
         
         if(isValid) {
             this.user.fetchUser(this.username);
+            HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
+            session.setAttribute("username", this.username);
+            session.setAttribute("password", this.password);
             result = "/products";
         } else {
             //Bruker er ugyldig
@@ -75,19 +79,17 @@ public class UserController implements Serializable {
         HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
         String result;
         
-        this.user.setUsername(request.getParameter("username"));
-        // this.username = request.getParameter("username");
+        this.username = request.getParameter("username");
         this.email = request.getParameter("email");
         this.phonenumber = request.getParameter("phonenumber");
         this.password = request.getParameter("password");
         
-        if(user.isValidRegister(this.username, this.email, this.phonenumber, this.password)) {
-            User newUser = new User();
-            newUser.setUsername(this.username);
-            newUser.setEmail(this.email);
-            newUser.setPhoneNumber(this.phonenumber);
-            newUser.setPassword(this.password);
-            user.storeUser(newUser);
+        if(this.user.isValidRegister(this.username, this.email, this.phonenumber, this.password)) {
+            this.user.setUsername(this.username);
+            this.user.setEmail(this.email);
+            this.user.setPhoneNumber(this.phonenumber);
+            this.user.setPassword(this.password);
+            this.user.storeUser(this.user);
             return "login";
         } else return "register";
     }

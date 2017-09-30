@@ -28,7 +28,7 @@ import javax.persistence.Table;
  * @author TorkelNes
  */
 @Stateful
-//@LocalBean
+@LocalBean
 @Entity
 @Table(name = "\"User\"") //User is a reservered SQL keyword - this escapes this
 @NamedQueries({
@@ -75,7 +75,7 @@ public class User implements Serializable {
     }
     
     public void storeUser(User user) {
-        em.persist(user);
+        getEntityManager().persist(user);
     }
     
     public boolean isValidLogin(String username, String password) {
