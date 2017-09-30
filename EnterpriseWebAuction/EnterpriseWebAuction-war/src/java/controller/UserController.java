@@ -8,6 +8,7 @@ package controller;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import javax.annotation.ManagedBean;
 import javax.ejb.EJB;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
@@ -17,7 +18,8 @@ import no.hvl.dat250.User;
  *
  * @author TorkelNes
  */
-@Named(value = "user")
+@Named(value = "userController")
+@ManagedBean
 @SessionScoped
 public class UserController implements Serializable {
 
@@ -63,12 +65,18 @@ public class UserController implements Serializable {
        return null; 
     }
     
+    public String InitRegister(){
+        this.user = new User();
+        return "register";
+    }
+    
     public String register() {
         FacesContext context = FacesContext.getCurrentInstance();
         HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
         String result;
         
-        this.username = request.getParameter("username");
+        this.user.setUsername(request.getParameter("username"));
+        // this.username = request.getParameter("username");
         this.email = request.getParameter("email");
         this.phonenumber = request.getParameter("phonenumber");
         this.password = request.getParameter("password");

@@ -14,8 +14,8 @@ and open the template in the editor.
     <body>
         <h1>Register</h1>
         <h:form>
-            <p>Username: <h:inputText id="username" value="#{user.username}" /></p>
-            <p>Email: <h:inputText id="email" value="#{user.email}" /></p>
+            <p>Username: <h:inputText id="username" value="#{userController.username}" /></p>
+            <p>Email: <h:inputText id="email" value="#{userController.email}" /></p>
             <p>Phone number: <h:inputText id="phonenumber" value="#{user.phonenumber}" /></p>
             <p>Password: <h:inputText id="password" value="#{user.password}" /></p>
             <h:commandButton id="register" value="Register" action="#{user.register}" />

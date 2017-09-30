@@ -9,3 +9,5 @@
 /EnterpriseWebAuction/EnterpriseWebAuction-war/dist/
 EnterpriseWebAuction/EnterpriseWebAuction-war/src/conf/persistence.xml
 EnterpriseWebAuction/EnterpriseWebAuction-war/src/conf/persistence.xml
+EnterpriseWebAuction/EnterpriseWebAuction-war/src/conf/persistence.xml
+EnterpriseWebAuction/EnterpriseWebAuction-war/web/WEB-INF/glassfish-resources.xml
